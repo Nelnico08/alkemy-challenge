@@ -1,7 +1,8 @@
-const express = require('express');
+const server = require("./src/app");
+const { conn } = require("./src/db");
 
-const app = express();
-
-app.listen(3001, () => {
-    console.log("puerto 3001")
+conn.sync( {force: true}).then(() => {
+  server.listen(process.env.PORT, () =>{
+    console.log(`listening at ${process.env.PORT}`)
+  })
 })
