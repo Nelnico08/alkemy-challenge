@@ -8,6 +8,8 @@ const server = express();
 
 server.name = 'API';
 
+server.use(express.json());
+
 server.use(morgan('dev'));
 
 server.use(
