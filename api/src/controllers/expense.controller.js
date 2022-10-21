@@ -7,7 +7,10 @@ const getExpense = async(req, res, next) => {
     const month = await Month.findByPk(monthID);
     if(!month) return res.json("Month ID doesn't exist");
 
-    const expenses = await Expense.findAll({where:{ id: monthID }})
+    const expenses = await Expense.findAll({
+      where:{ monthId: monthID },
+      attributes: ['id', 'concept', 'date', 'amount', 'monthId']
+    })
 
     return res.json(expenses)
   }catch(err){

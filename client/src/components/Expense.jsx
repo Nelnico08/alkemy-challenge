@@ -2,7 +2,7 @@ import React from 'react'
 import { FaTrashAlt } from 'react-icons/fa'
 import { BsPencilFill } from 'react-icons/bs'
 
-export default function Expense({ month }) {
+export default function Expense({ month, handleTransaction }) {
   return (
     <div>
       <div className='bg-red-700 text-center font-bold'>
@@ -28,7 +28,9 @@ export default function Expense({ month }) {
         }
       </div>
       <div className="flex justify-center p-2 mt-1 mb-2 rounded-md bg-blue-700 text-pink-400 hover:bg-cyan-700">
-        <button>Add Expense</button>
+        <button onClick={() => handleTransaction({type: 'Expense', monthName: month.name})} >
+          Add Expense
+        </button>
       </div>
     </div>
   )

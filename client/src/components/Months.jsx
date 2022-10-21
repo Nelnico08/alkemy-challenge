@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { FaArrowAltCircleDown, FaArrowAltCircleLeft, FaTrashAlt } from 'react-icons/fa'
-import { BsPencilFill } from 'react-icons/bs'
+import { FaArrowAltCircleDown, FaArrowAltCircleLeft } from 'react-icons/fa'
 import Income from './Income'
 import Expense from './Expense'
 
-export default function Months({ month }) {
+export default function Months({ month, handleTransaction }) {
 
   const [isOpen, setIsOpen] = useState(false)
   const [hidden, setHidden] = useState('')
@@ -36,9 +35,9 @@ export default function Months({ month }) {
                 <div className='w-5 h-5 flex justify-center items-center ml-3'><FaArrowAltCircleLeft /></div>
               </div>
             </div>
-            <Income month={month} />
+            <Income month={month} handleTransaction={handleTransaction} />
             
-            <Expense month={month} />
+            <Expense month={month} handleTransaction={handleTransaction} />
             
           </div>
         }
