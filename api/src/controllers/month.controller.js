@@ -1,4 +1,4 @@
-const { Month } = require('../db');
+const { Month, Income, Expense } = require('../db');
 
 const getMonth = async(req,res,next) => {
   try {
@@ -8,7 +8,17 @@ const getMonth = async(req,res,next) => {
       const searchMonth = await Month.findByPk(
         monthID, 
         {
-          attributes: ['id', 'name', 'total']
+          attributes: ['id', 'name', 'total'],
+          include: [
+            {
+              model: Income,
+              attributes: ['id', 'concept', 'date', 'amount']
+            },
+            {
+              model: Expense,
+              attributes: ['id', 'concept', 'date', 'amount']
+            }
+          ]
         }
       );
       if(!searchMonth) return res.json("Month ID doesn't exist");
