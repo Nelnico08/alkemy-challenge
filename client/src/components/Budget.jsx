@@ -1,35 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import Months from './Months';
-import mock from '../mock/mock.json'
+// import mock from '../mock/mock.json'
 import year from '../assets/months';
 import Transaction from './TransactionForm/Transaction';
+import { getMonths } from '../redux/actions';
 
 export default function Budget() {
 
-  const [months, setMonths] = useState(mock);
+  const months = useSelector(state => state.months)
+
   const [budgetHidden, setBudgetHidden] = useState(false);
   const [transaction, setTransaction] = useState({});
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMonths())
+  }, [])
+  
+
   const addMonth = () => {
-    const lastMonth = months[months.length -1].name;
-    const indexMonth = year.indexOf(lastMonth)
-    if(lastMonth === 'December'){
-      setMonths(months.concat({
-        "monthID": months[months.length -1].monthID + 1,
-        "name": year[0],
-        "total": 0,
-        "incomes": [],
-        "expenses": []
-      }))
-    }else{
-      setMonths(months.concat({
-        "monthID": months[months.length -1].monthID + 1,
-        "name": year[indexMonth + 1],
-        "total": 0,
-        "incomes": [],
-        "expenses": []
-      }))
-    }
+    //continuara
   }
 
   const handleTransaction = (type) =>{
