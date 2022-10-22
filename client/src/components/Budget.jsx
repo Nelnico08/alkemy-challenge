@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import Months from './Months';
-// import mock from '../mock/mock.json'
 import year from '../assets/months';
 import Transaction from './TransactionForm/Transaction';
 import { getMonths } from '../redux/actions';
@@ -36,7 +35,7 @@ export default function Budget() {
       <div className={budgetHidden ? "hidden" : "flex flex-col w-[500px]"}>
         {
           months && months?.map(month => (
-            <Months month={month} key={month.monthID} handleTransaction={handleTransaction} />
+            <Months month={month} key={month.id} handleTransaction={handleTransaction} />
           ))
         }
         <div className="flex justify-center p-2 mt-1 rounded-md bg-green-700 text-pink-400 hover:bg-green-400">

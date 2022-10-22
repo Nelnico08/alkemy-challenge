@@ -1,1 +1,3 @@
 export const GET_MONTHS = 'GET_MONTHS';
+export const GET_MONTHS_DETAIL = 'GET_MONTHS_DETAIL';
+export const CLEAN_DETAIL_STATE = 'CLEAN_DETAIL_STATE';

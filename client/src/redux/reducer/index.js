@@ -1,4 +1,4 @@
-import { GET_MONTHS } from "../actionsTypes";
+import { CLEAN_DETAIL_STATE, GET_MONTHS, GET_MONTHS_DETAIL } from "../actionsTypes";
 
 const initialState = {
   months: [],
@@ -13,7 +13,17 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state,
         months: action.payload
-      }
+      };
+    case GET_MONTHS_DETAIL:
+      return{
+        ...state,
+        detail: action.payload
+      };
+    case CLEAN_DETAIL_STATE:
+      return{
+        ...state,
+        detail:{}
+      };
     default:
       return state;
   }
